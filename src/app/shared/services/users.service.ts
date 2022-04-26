@@ -12,4 +12,9 @@ export class UsersService {
         let url = "https://gorest.co.in/public/v2/users";
         return this.http.get(url);
     }
+
+    getOneUser(id: number) {
+        let url = "https://gorest.co.in/public/v2/users/" + id;
+        return this.http.get(url);
+    }
 }

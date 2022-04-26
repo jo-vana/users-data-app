@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { UsersService } from "src/app/shared/services/users.service";
 
@@ -8,7 +8,7 @@ import { UsersService } from "src/app/shared/services/users.service";
     styleUrls: ['users-list.component.scss']
 })
 
-export class UsersListComponent implements OnInit {
+export class UsersListComponent {
     userList: any;
 
     constructor( private users: UsersService,
@@ -17,10 +17,6 @@ export class UsersListComponent implements OnInit {
             console.log(data);
             this.userList = data;
         })
-    }
-
-    ngOnInit(): void {
-        this.userList;
     }
 
     onClick(item: any) {
