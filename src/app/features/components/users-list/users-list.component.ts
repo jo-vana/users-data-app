@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { UsersService } from "src/app/shared/services/users.service";
 
 @Component({
@@ -10,7 +11,8 @@ import { UsersService } from "src/app/shared/services/users.service";
 export class UsersListComponent implements OnInit {
     userList: any;
 
-    constructor( private users: UsersService) {
+    constructor( private users: UsersService,
+        private router: Router) {
         this.users.getData().subscribe(data => {
             console.log(data);
             this.userList = data;
@@ -22,6 +24,9 @@ export class UsersListComponent implements OnInit {
     }
 
     onClick(item: any) {
-        console.log('click', item)
+        console.log('click', item);
+        let url: string[];
+        url = ['user/' + item.id];
+        this.router.navigate(url);
     }
 }
