@@ -16,7 +16,6 @@ export class UserPageComponent implements OnInit {
 
     ngOnInit() {
         console.log('user', this.user)
-        console.log(this.route.snapshot.params)
         this.user = this.route.snapshot.params;
         this.getData();
     }
@@ -24,7 +23,6 @@ export class UserPageComponent implements OnInit {
     getData() {
         let id = this.route.snapshot.params.id;
         this.service.getOneUser(id).subscribe(data => {
-            console.log('what',data)
             this.user = data;
 
         });

@@ -20,7 +20,7 @@ export class UsersListComponent {
     }
 
     onClick(item: any) {
-        console.log('click', item);
+        console.log('user', item);
         let url: string[];
         url = ['user/' + item.id];
         this.router.navigate(url);
