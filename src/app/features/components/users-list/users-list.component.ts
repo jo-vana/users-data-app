@@ -21,4 +21,7 @@ export class UsersListComponent implements OnInit {
         this.userList;
     }
 
+    onClick(item: any) {
+        console.log('click', item)
+    }
 }
