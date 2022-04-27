@@ -15,7 +15,6 @@ export class UserPageComponent implements OnInit {
         private service: UsersService) {}
 
     ngOnInit() {
-        console.log('user', this.user)
         this.user = this.route.snapshot.params;
         this.getData();
     }
