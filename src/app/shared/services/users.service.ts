@@ -9,12 +9,12 @@ export class UsersService {
     constructor( private http: HttpClient) {}
 
     getData() {
-        let url = "https://gorest.co.in/public/v2/users";
+        const url = "https://gorest.co.in/public/v2/users";
         return this.http.get(url);
     }
 
     getOneUser(id: number) {
-        let url = "https://gorest.co.in/public/v2/users/" + id;
+        const url = "https://gorest.co.in/public/v2/users/" + id;
         return this.http.get(url);
     }
 }
