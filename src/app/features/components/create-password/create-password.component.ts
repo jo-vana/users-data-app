@@ -1,6 +1,8 @@
+import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms";
 import { ComparePassword } from "./customvalidator.validator";
+
 
 @Component({
     selector: 'app-create-password',
@@ -12,7 +14,8 @@ export class CreatePasswordComponent implements OnInit {
     createPasswordForm! : FormGroup;
     submitted = false;
 
-    constructor(private fb: FormBuilder) {}
+    constructor(private fb: FormBuilder,
+                private http: HttpClient) {}
     
     ngOnInit() {
         this.createPasswordForm = this.fb.group({
@@ -26,9 +29,16 @@ export class CreatePasswordComponent implements OnInit {
 
     onCreatePassword() {
         this.submitted = true;
+        const formData = this.createPasswordForm.value;
+        console.log('formData', formData)
         if(this.createPasswordForm.invalid) {
             return
-        } 
-        console.log(this.createPasswordForm.value)
+        } else {
+            this.http.post('https://test111.free.beeceptor.com/my/api/path', formData)
+            .subscribe((result) => {
+
+            })
+        }
+        
     }
 }
