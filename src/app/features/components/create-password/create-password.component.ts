@@ -12,13 +12,12 @@ export class CreatePasswordComponent implements OnInit {
     createPasswordForm! : FormGroup;
     submitted = false;
 
-    constructor(private fb: FormBuilder) {
-
-    }
+    constructor(private fb: FormBuilder) {}
+    
     ngOnInit() {
         this.createPasswordForm = this.fb.group({
             emailAddress: new FormControl('', [Validators.required, Validators.email]),
-            password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+            password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(new RegExp(/^[a-zA-Z ']+[0-9]+$/))]),
             confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
         }, {
             validator: ComparePassword("password", "confirmPassword")
