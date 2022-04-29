@@ -38,6 +38,13 @@ export class CreatePasswordComponent implements OnInit {
         } else {
             this.passService.postData(formData);
         }
-        this.createPasswordForm.reset();
+        this.resetForm(this.createPasswordForm);
+    }
+
+    resetForm(form: FormGroup) {
+        form.reset();
+        Object.keys(form.controls).forEach(key => {
+            form.get(key)?.setErrors(null);
+        }) 
     }
 }
