@@ -1,4 +1,3 @@
-import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators, FormBuilder } from "@angular/forms";
 import { PasswordService } from "src/app/shared/services/password.service";
@@ -16,7 +15,6 @@ export class CreatePasswordComponent implements OnInit {
     submitted = false;
 
     constructor(private fb: FormBuilder,
-                private http: HttpClient,
                 private passService: PasswordService) {}
     
     ngOnInit() {

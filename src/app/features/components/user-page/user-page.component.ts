@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { UsersService } from "src/app/shared/services/users.service";
+import { take } from "rxjs/operators";
 
 @Component({
     selector: 'app-user-page',
@@ -21,8 +22,10 @@ export class UserPageComponent implements OnInit {
 
     getData() {
         let id = this.route.snapshot.params.id;
-        this.service.getOneUser(id).subscribe(data => {
-            this.user = data;
+        this.service.getOneUser(id)
+            .pipe(take(1))
+            .subscribe(data => {
+                this.user = data;
 
         });
     }
